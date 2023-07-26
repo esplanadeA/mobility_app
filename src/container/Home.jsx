@@ -10,6 +10,7 @@ const Home = () => {
   return (
     <Box>
       <HeroBanner />
+      {/* passing data from components on home page */}
       <SearchExercises
         setExercises={setExercises}
         bodyPart={bodyPart}
