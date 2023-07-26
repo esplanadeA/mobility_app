@@ -7,7 +7,9 @@ import { exerciseOptions, fetchData } from '../utils/fetchData';
 // import Loader from './Loader';
 
 const Exercises = ({ exercises, setExercises, bodyPart }) => {
-  <Box id="exercises"></Box>;
+  <Box id="exercises" sx={{ mt: { lg: '109px' } }} mt="50px" p="20px">
+    <Typography variant="h3">showing result</Typography>
+  </Box>;
 };
 
 export default Exercises;
