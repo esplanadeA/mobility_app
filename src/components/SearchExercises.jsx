@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Box, Stack, Button, Typography, TextField } from '@mui/material';
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollbar from './HorizontalScrollbar.js';
-
+// { setExercises, bodyPart, setBodyPart }
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   const [search, setSearch] = useState('');
-  //   const [exercises, setExercises] = useState([]);
   const [bodyParts, setBodyParts] = useState([]);
 
+  // fetch data from rapidapi with the bodypart info about exercise for search
   useEffect(() => {
     const fetchExercisesData = async () => {
       const bodyPartsData = await fetchData(
@@ -15,11 +15,13 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
         exerciseOptions
       );
       setBodyParts(['all', ...bodyPartsData]);
+      console.log(bodyPartsData);
     };
 
     fetchExercisesData();
   }, []);
 
+  // fetch data with all the exercise data
   const handleSearch = async (e) => {
     if (search) {
       const exercisesData = await fetchData(
@@ -89,8 +91,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
         <HorizontalScrollbar
           data={bodyParts}
-          bodyParts
-          setBodyPart={setBodyParts}
+          setBodyPart={setBodyPart}
           bodyPart={bodyParts}
         />
       </Box>
