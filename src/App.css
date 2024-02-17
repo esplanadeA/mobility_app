@@ -13,7 +13,9 @@ body {
 ::-webkit-scrollbar {
   width: 0px;
 }
-
+.css-0{
+   width: 100%;
+}
 .right-arrow,
 .left-arrow {
   cursor: pointer;
@@ -112,10 +114,10 @@ body {
     height: 300px;
   }
 
+.react-horizontal-scrolling-menu--scroll-container{
+   display: flex;
+}
 
-  .react-horizontal-scrolling-menu--scroll-container {
-    width: 500px;
-  }
 
   .left-arrow,
   .right-arrow {
