@@ -112,10 +112,10 @@ body {
     height: 300px;
   }
 
+.react-horizontal-scrolling-menu--scroll-container{
+   display: flex;
+}
 
-  .react-horizontal-scrolling-menu--scroll-container {
-    width: 500px;
-  }
 
   .left-arrow,
   .right-arrow {
@@ -140,5 +140,4 @@ body {
 @media screen and (max-width:400px) {
   .exercise-card {
     width: 280px;
-  }
-}
+  }}
