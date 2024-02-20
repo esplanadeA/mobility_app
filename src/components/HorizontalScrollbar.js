@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { Box, Typography } from '@mui/material';
 import ExerciseCard from './ExerciseCard';
@@ -20,29 +20,27 @@ const LeftArrow = () => {
 };
 
 const RightArrow = () => {
-  const { scrollPrev, isLastItemVisible } = useContext(VisibilityContext);
+  const { scrollNext, isLastItemVisible } = useContext(VisibilityContext);
   return (
-    <Typography disabled={!isLastItemVisible} onClick={scrollPrev} className="right-arrow">
+    <Typography disabled={!isLastItemVisible} onClick={scrollNext} className="right-arrow">
       <img src={RightArrowIcon} alt="right-arrow" />
     </Typography>
   );
 };
 
 const HorizontalScrollbar = ({ data, bodyParts, setBodyPart, bodyPart }) => (
-  <div style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
-    <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-      {data.map((item) => (
-        // console.log(item);
-        <Box key={item.id || item} itemID={item.id || item} title={item.id || item} m="0 40px">
-          {bodyParts ? (
-            <BodyPart item={item} setBodyPart={setBodyPart} bodyPart={bodyPart} />
-          ) : (
-            <ExerciseCard exercise={item} />
-          )}
-        </Box>
-      ))}
-    </ScrollMenu>
-  </div>
+  <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+    {data.map((item) => (
+      // console.log(item);
+      <Box key={item.id || item} itemID={item.id || item} title={item.id || item} m="0 40px">
+        {bodyParts ? (
+          <BodyPart item={item} setBodyPart={setBodyPart} bodyPart={bodyPart} />
+        ) : (
+          <ExerciseCard exercise={item} />
+        )}
+      </Box>
+    ))}
+  </ScrollMenu>
 );
 
 export default HorizontalScrollbar;
