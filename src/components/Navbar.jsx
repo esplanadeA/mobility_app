@@ -24,19 +24,9 @@ const Navbar = () => {
           borderBottom: '3px solid #FF2625',
         }}
       >
-        <img
-          src={images.Logo}
-          alt="logo"
-          style={{ width: '48px', height: '48px', margin: '0px 20px' }}
-        />
+        <img src={images.Logo} alt="logo" style={{ width: '48px', height: '48px', margin: '0px 20px' }} />
       </Link>
-      <Stack
-        direction="row"
-        gap="40px"
-        fontFamily="Alegreya"
-        fontSize="24px"
-        alignItems="flex-end"
-      >
+      <Stack direction="row" gap="40px" fontFamily="Alegreya" fontSize="24px" alignItems="flex-end">
         <Link
           to="/"
           style={{
@@ -47,10 +37,7 @@ const Navbar = () => {
         >
           Home
         </Link>
-        <a
-          href="#exercise"
-          style={{ textDecoration: 'none', color: '#3A1212' }}
-        >
+        <a href="#exercise" style={{ textDecoration: 'none', color: '#3A1212' }}>
           Exercise
         </a>
       </Stack>
