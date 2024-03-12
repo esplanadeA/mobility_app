@@ -18,29 +18,49 @@ const LeftArrow = () => {
     </Typography>
   );
 };
-
 const RightArrow = () => {
-  const { scrollNext, isLastItemVisible } = useContext(VisibilityContext);
+  const { scrollNext, isFirstItemVisible } = useContext(VisibilityContext);
+
   return (
-    <Typography disabled={!isLastItemVisible} onClick={scrollNext} className="right-arrow">
-      <img src={RightArrowIcon} alt="right-arrow" />
+    <Typography disabled={isFirstItemVisible} onClick={scrollNext} className="left-arrow">
+      <img src={LeftArrowIcon} alt="left-arrow" />
     </Typography>
   );
 };
 
-const HorizontalScrollbar = ({ data, bodyParts, setBodyPart, bodyPart }) => (
-  <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-    {data.map((item) => (
-      // console.log(item);
-      <Box key={item.id || item} itemID={item.id || item} title={item.id || item} m="0 40px">
-        {bodyParts ? (
-          <BodyPart item={item} setBodyPart={setBodyPart} bodyPart={bodyPart} />
+const HorizontalScrollbar = ({ data, bodyParts, setBodyPart, bodyPart }) => {
+  const itemsPerRow = 4; // Change this value to adjust the number of visible items per row
+  const wrapperStyle = { maxWidth: `calc(${itemsPerRow * 300}px + (${itemsPerRow - 1} * 40px))` };
+  return (
+    <ScrollMenu
+      LeftArrow={LeftArrow}
+      RightArrow={RightArrow}
+      wrapperStyle={wrapperStyle}
+      data={data.map((item) => ({
+        ...item,
+        clickData: bodyParts ? (
+          <Box width="300px" m="0 40px">
+            <BodyPart item={item} setBodyPart={setBodyPart} bodyPart={bodyPart} />
+          </Box>
         ) : (
-          <ExerciseCard exercise={item} />
-        )}
-      </Box>
-    ))}
-  </ScrollMenu>
-);
+          <Box width="300px" m="0 40px">
+            <ExerciseCard exercise={item} />
+          </Box>
+        ),
+      }))}
+    >
+      {data.map((item) => (
+        // console.log(item);
+        <Box key={item.id || item} itemID={item.id || item} title={item.id || item} m="0 40px">
+          {bodyParts ? (
+            <BodyPart item={item} setBodyPart={setBodyPart} bodyPart={bodyPart} />
+          ) : (
+            <ExerciseCard exercise={item} />
+          )}
+        </Box>
+      ))}
+    </ScrollMenu>
+  );
+};
 
 export default HorizontalScrollbar;

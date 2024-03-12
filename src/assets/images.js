@@ -1,4 +1,4 @@
-import banner from './images/banner.png';
+import banner from './images/banner.jpg';
 import Logo1 from './images/Logo1.png';
 import Logo from './images/Logo.png';
 import gym from './icons/gym.png';
